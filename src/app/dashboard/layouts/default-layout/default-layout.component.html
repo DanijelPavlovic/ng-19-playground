@@ -1,13 +1,13 @@
-<div class="flex flex-col h-screen">
+<div class="flex flex-col h-screen ">
   <app-header/>
 
-  <div class="flex flex-1 mt-12 overflow-hidden bg-gray-400">
+  <div class="flex flex-1 mt-12 overflow-hidden ">
     <app-sidebar *ngIf="layoutService.sidebarOpen()"/>
 
     <div class="flex-1 overflow-y-auto px-6">
       <p-progressBar
         mode="indeterminate"
-        [style]="{ height: '4px'}"
+        [style]="{ height: '4px', marginTop: '4px'}"
         *ngIf="loadingService.isRequestLoading()">
       </p-progressBar>
       <p-card class="p-4" styleClass="h-screen">

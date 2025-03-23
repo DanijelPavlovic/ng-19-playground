@@ -1,23 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {Menu} from 'primeng/menu';
-import {NgIf, NgOptimizedImage} from '@angular/common';
 import {MenuItem} from 'primeng/api';
-import {ButtonDirective} from 'primeng/button';
-import {Avatar} from 'primeng/avatar';
 import {Ripple} from 'primeng/ripple';
-import {Badge} from 'primeng/badge';
 import {RouterLink} from '@angular/router';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   imports: [
     Menu,
-    NgOptimizedImage,
-    Avatar,
     Ripple,
-    Badge,
-    NgIf,
-    RouterLink
+    RouterLink,
+    CommonModule
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
