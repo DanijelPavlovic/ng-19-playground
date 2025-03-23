@@ -11,6 +11,7 @@ import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {MessageService} from 'primeng/api';
 import {authInterceptor} from './auth/interceptors/auth.interceptor';
 import {errorInterceptor} from './core/interceptors/error.interceptor';
+import {requestProgressInterceptor} from './core/interceptors/request-progress.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,7 +23,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
     provideHttpClient(
-      withInterceptors([authInterceptor, errorInterceptor]),
+      withInterceptors([authInterceptor, errorInterceptor, requestProgressInterceptor]),
     ),
     providePrimeNG({
       theme: {
