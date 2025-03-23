@@ -43,9 +43,7 @@ export class AuthService {
       return of(user);
     }
 
-    return this.http.get<User>(`${this.BASE_URL}/me`, {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`),
-    }).pipe(
+    return this.http.get<User>(`${this.BASE_URL}/me`).pipe(
       map((response: User) => {
         this.setUser(response);
         return response
@@ -62,13 +60,6 @@ export class AuthService {
       next: (response) => {
         this.setToken(response.value);
         this.router.navigateByUrl('dashboard');
-      }, error: (error) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Login Failed',
-          key: 'br',
-          detail: error.error?.error?.message || 'Unknown error',
-        });
       }
     })
   }
