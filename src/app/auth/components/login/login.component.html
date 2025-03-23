@@ -1,0 +1,73 @@
+<p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+  <ng-template #header>
+    <img alt="Card" class="w-full" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"/>
+  </ng-template>
+  <ng-template #title>
+    <div class="flex justify-center">Login</div>
+  </ng-template>
+  <ng-template #subtitle>
+    <div class="p-2">
+      Enter your credentials in order to access the admin system
+    </div>
+  </ng-template>
+
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <div class="flex flex-col gap-4">
+
+      <div class="flex flex-col gap-1">
+        <p-inputgroup class="p-2">
+          <p-inputgroup-addon>
+            <i class="pi pi-user"></i>
+          </p-inputgroup-addon>
+          <input
+            pInputText
+            formControlName="username"
+            placeholder="Username"
+            aria-label="username"
+            [ngClass]="{ 'ng-invalid': form.get('username')?.invalid && form.get('username')?.touched }"
+          />
+        </p-inputgroup>
+        <p-message
+          *ngIf="form.get('username')?.invalid && form.get('username')?.touched"
+          severity="error"
+          variant="simple"
+          size="small"
+          class="ml-2"
+        >
+          Username is required
+        </p-message>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <p-inputgroup class="p-2">
+          <p-inputgroup-addon>
+            <i class="pi pi-key"></i>
+          </p-inputgroup-addon>
+          <input
+            pInputText
+            formControlName="password"
+            type="password"
+            placeholder="Password"
+            aria-label="email"
+            [ngClass]="{ 'ng-invalid': form.get('password')?.invalid && form.get('password')?.touched }"
+          />
+        </p-inputgroup>
+        <p-message
+          *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
+          severity="error"
+          variant="simple"
+          size="small"
+          class="ml-2"
+        >
+          Password is required
+        </p-message>
+      </div>
+    </div>
+
+    <div class="flex gap-4 mt-1 py-6">
+<!--      <p-button label="Cancel" severity="secondary" class="w-full" [outlined]="true" styleClass="w-full"/>-->
+      <p-button label="Login" type="submit" class="w-full" styleClass="w-full" [disabled]="form.invalid"/>
+    </div>
+  </form>
+</p-card>
+
