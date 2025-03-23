@@ -5,9 +5,10 @@ import {Toast} from 'primeng/toast';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Toast],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `
+    <router-outlet/>
+    <p-toast position="bottom-right" key="br"/>
+  `,
 })
 export class AppComponent {
-  title = 'wanda-admin-ng';
 }

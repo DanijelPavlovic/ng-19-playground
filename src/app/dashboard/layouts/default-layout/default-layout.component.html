@@ -1,12 +1,18 @@
-<div class="flex h-screen">
-  <app-sidebar />
-  <div class="bg-red-700 w-full p-4">
-    <p-progressBar
-      mode="indeterminate"
-      [style]="{ height: '4px' }"
-      *ngIf="loadingService.isRequestLoading()">
-    </p-progressBar>
-    <router-outlet/>
+<div class="flex flex-col h-screen">
+  <app-header/>
+
+  <div class="flex flex-1 mt-12 overflow-hidden bg-gray-400">
+    <app-sidebar *ngIf="layoutService.sidebarOpen()"/>
+
+    <div class="flex-1 overflow-y-auto px-6">
+      <p-progressBar
+        mode="indeterminate"
+        [style]="{ height: '4px'}"
+        *ngIf="loadingService.isRequestLoading()">
+      </p-progressBar>
+      <p-card class="p-4" styleClass="h-screen">
+        <router-outlet/>
+      </p-card>
+    </div>
   </div>
 </div>
-
