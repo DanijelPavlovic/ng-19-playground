@@ -5,6 +5,7 @@ import {AuthGuard} from './auth/guards/auth.guard';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
 import {LoginComponent} from './auth/components/login/login.component';
+import {UserProfileComponent} from './user/components/user-profile/user-profile.component';
 
 export const routes: Routes = [
 
@@ -22,6 +23,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     // TODO: lazy load
     children: [
+      {path: 'profile', component: UserProfileComponent},
       {path: 'dashboard', component: DashboardComponent},
     ]
   },

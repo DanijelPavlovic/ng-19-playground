@@ -5,9 +5,10 @@
   </ng-template>
 
   <ng-template #item let-item>
-    <a pRipple [routerLink]="item.routerLin" class="flex items-center p-menu-item-link">
+    <a pRipple [routerLink]="item.routerLink" class="flex items-center p-menu-item-link">
       <span class="" [ngClass]="item.icon"></span>
       <span class="ml-2 text-sm">{{ item.label }}</span>
+      <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
     </a>
   </ng-template>
 </p-menu>

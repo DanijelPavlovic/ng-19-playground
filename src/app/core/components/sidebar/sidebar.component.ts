@@ -4,6 +4,7 @@ import {MenuItem} from 'primeng/api';
 import {Ripple} from 'primeng/ripple';
 import {RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
+import {Badge} from 'primeng/badge';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +12,8 @@ import {CommonModule} from '@angular/common';
     Menu,
     Ripple,
     RouterLink,
-    CommonModule
+    CommonModule,
+    Badge
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
@@ -22,12 +24,12 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
-        label: 'Documents',
+        label: 'Home',
         items: [
           {
             label: 'Dashboard',
             icon: 'pi pi-home',
-            routerLink: 'dashboard',
+            routerLink: '/dashboard',
           },
           {
             label: 'Search',
@@ -40,23 +42,18 @@ export class SidebarComponent implements OnInit {
         separator: true
       },
       {
-        label: 'Profile',
+        label: 'Admin',
         items: [
-          {
-            label: 'Settings',
-            icon: 'pi pi-cog',
-            shortcut: '⌘+O'
-          },
           {
             label: 'Messages',
             icon: 'pi pi-inbox',
             badge: '2'
           },
           {
-            label: 'Logout',
-            icon: 'pi pi-sign-out',
-            shortcut: '⌘+Q'
-          }
+            label: 'Settings',
+            icon: 'pi pi-cog',
+            shortcut: '⌘+O'
+          },
         ]
       },
     ];
