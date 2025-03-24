@@ -1,14 +1,42 @@
-<p-menu [model]="items" class="flex justify-center py-6 pl-4 h-[calc(100vh-4rem)]"
-        styleClass="overflow-y-auto border-0">
-  <ng-template #submenuheader let-item>
-    <span class="text-sm font-bold">{{ item.label }}</span>
-  </ng-template>
+<div *ngIf="!layoutService.isMobile(); else mobileSidebar">
+  <p-menu *ngIf="layoutService.sidebarOpen()"
+          [model]="items"
+          class="flex justify-center py-6 pl-4 h-[calc(100vh-4rem)]"
+          styleClass="overflow-y-auto border-0">
+    <ng-template #submenuheader let-item>
+      <span class="text-sm font-bold">{{ item.label }}</span>
+    </ng-template>
 
-  <ng-template #item let-item>
-    <a pRipple [routerLink]="item.routerLink" class="flex items-center p-menu-item-link">
-      <span class="" [ngClass]="item.icon"></span>
-      <span class="ml-2 text-sm">{{ item.label }}</span>
-      <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
-    </a>
-  </ng-template>
-</p-menu>
+    <ng-template #item let-item>
+      <a pRipple [routerLink]="item.routerLink" class="flex items-center p-menu-item-link">
+        <span class="" [ngClass]="item.icon"></span>
+        <span class="ml-2 text-sm">{{ item.label }}</span>
+        <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge"/>
+      </a>
+    </ng-template>
+  </p-menu>
+</div>
+
+<!--TODO: extract p-drawer to its own component with props for class-->
+
+<ng-template #mobileSidebar>
+  <p-drawer [(visible)]="layoutService.sidebarOpen" styleClass="!w-64">
+    <p-menu
+      [model]="items"
+      class=" h-[calc(100vh-4rem)]"
+      styleClass="overflow-y-auto border-0">
+      <ng-template #submenuheader let-item>
+        <span class="text-sm font-bold">{{ item.label }}</span>
+      </ng-template>
+
+      <ng-template #item let-item>
+        <a pRipple [routerLink]="item.routerLink" class="flex items-center p-menu-item-link">
+          <span class="" [ngClass]="item.icon"></span>
+          <span class="ml-2 text-sm">{{ item.label }}</span>
+          <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge"/>
+        </a>
+      </ng-template>
+    </p-menu>
+  </p-drawer>
+</ng-template>
+

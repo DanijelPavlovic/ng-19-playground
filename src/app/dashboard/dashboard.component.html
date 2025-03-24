@@ -1,1 +1,12 @@
-<p>dashboard works!</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  <p-card *ngFor="let widget of widgets"
+          [header]="widget.label"
+          styleClass="border-1 shadow-lg shadow-green-500/50"
+  >
+    <div class="">
+      <p class="m-0">
+        Lorem ipsum dolor sit amet...
+      </p>
+    </div>
+  </p-card>
+</div>

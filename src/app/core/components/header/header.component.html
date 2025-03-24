@@ -1,6 +1,12 @@
 <div class="flex fixed top-0 left-0 w-full px-8 items-center h-12 z-10 shadow-md">
   <div class="flex items-center gap-1">
-    <p-button icon="pi pi-bars" text rounded severity="secondary" (click)="layoutService.toggleSidebarOpen()"/>
+    <p-button
+      icon="pi pi-bars"
+      text
+      rounded
+      severity="secondary"
+      (click)="layoutService.toggleSidebarOpen()"
+    />
     <div class="flex items-center">
       <img ngSrc="/assets/svg/angular-icon.svg" alt="Logo" width="24" height="24"/>
       <span class="text-xl font-semibold ml-2 flex items-center">
