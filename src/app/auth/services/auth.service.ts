@@ -1,9 +1,8 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, catchError, map, Observable, of} from 'rxjs';
-import {User} from '../types';
+import {LoginResponse, User} from '../types';
 import {environment} from '../../../environments/environment';
-import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -16,7 +15,6 @@ export class AuthService {
 
   private userSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   private http: HttpClient = inject(HttpClient)
-  private messageService: MessageService = inject(MessageService)
   private router: Router = inject(Router);
 
 
@@ -48,16 +46,16 @@ export class AuthService {
         this.setUser(response);
         return response
       }),
-      catchError((error: any) => of(null))
+      catchError((): Observable<null> => of(null))
     );
   }
 
-  login(form: any): void {
-    this.http.post<any>(`${this.BASE_URL}/auth/login`, {
+  login(form: {username: string, password: string}): void {
+    this.http.post<LoginResponse>(`${this.BASE_URL}/auth/login`, {
       username: form.username,
       password: form.password,
     }).subscribe({
-      next: (response) => {
+      next: (response: LoginResponse) => {
         this.setToken(response.value);
         this.router.navigateByUrl('dashboard');
       }

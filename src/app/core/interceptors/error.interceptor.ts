@@ -35,19 +35,19 @@ const showNotification =  (error: HttpErrorResponse, messageService: MessageServ
   });
 }
 
-const handleErrorStatus = (status: number): void => {
-  switch (status) {
-    case 401: {
-      break;
-    }
-    case 403: {
-      break;
-    }
-    case 500: {
-      break;
-    }
-    default: {
-      break;
-    }
-  }
-}
+// const handleErrorStatus = (status: number): void => {
+//   switch (status) {
+//     case 401: {
+//       break;
+//     }
+//     case 403: {
+//       break;
+//     }
+//     case 500: {
+//       break;
+//     }
+//     default: {
+//       break;
+//     }
+//   }
+// }
