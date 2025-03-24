@@ -1,4 +1,4 @@
-<div class="flex flex-col h-screen ">
+<div class="flex flex-col h-screen">
   <app-header/>
 
   <div class="flex flex-1 mt-12 overflow-hidden ">
@@ -10,7 +10,7 @@
         [style]="{ height: '4px', marginTop: '4px'}"
         *ngIf="loadingService.isRequestLoading()">
       </p-progressBar>
-      <p-card class="p-4" styleClass="h-screen">
+      <p-card class="p-4" styleClass="h-[calc(100vh-7rem)]">
         <router-outlet/>
       </p-card>
     </div>
