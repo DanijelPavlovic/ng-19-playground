@@ -56,6 +56,16 @@ export class SidebarComponent implements OnInit {
             badge: '2'
           },
           {
+            label: 'Prices',
+            icon: 'pi pi-dollar',
+            routerLink: '/prices',
+          },
+          {
+            label: 'Categories',
+            icon: 'pi pi-dollar',
+            routerLink: '/categories',
+          },
+          {
             label: 'Settings',
             icon: 'pi pi-cog',
             shortcut: '⌘+O'

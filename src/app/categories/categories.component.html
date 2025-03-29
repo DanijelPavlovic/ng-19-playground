@@ -1,0 +1,48 @@
+<div>
+  <p-floatlabel variant="on" class="ml-2">
+    <input pInputText id="on_label" [(ngModel)]="searchTerm" autocomplete="off"/>
+    <label for="on_label">Search...</label>
+  </p-floatlabel>
+
+  <div *ngIf="categoriesRx.value() as categories">
+    <p-table
+      [value]="categories.data || []"
+      [tableStyle]="{ 'min-width': '50rem' }"
+    >
+      <ng-template #header>
+        <tr>
+          <th pSortableColumn="name" style="width:25%">
+            Name
+            <p-sortIcon field="name"/>
+          </th>
+          <th pSortableColumn="type" style="width:25%">
+            Type
+            <p-sortIcon field="type"/>
+          </th>
+          <th pSortableColumn="slug" style="width:25%">
+            Slug
+            <p-sortIcon field="slug"/>
+          </th>
+          <th style="width:25%">Created At</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-category>
+        <tr>
+          <td>{{ category.name }}</td>
+          <td>{{ category.type }}</td>
+          <td>{{ category.slug }}</td>
+          <td>{{ category.createdAt | date }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <p-paginator
+      (onPageChange)="handlePagination($event)"
+      [rows]="categories.meta.perPage"
+      [first]="categories.meta.currentPage"
+      [totalRecords]="categories.meta.total"
+      [rowsPerPageOptions]="[5, 10, 20]"
+    ></p-paginator>
+  </div>
+</div>
+
